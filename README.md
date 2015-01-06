@@ -1,7 +1,11 @@
 7dtd-server
 ===========
 
-Installs, configures and runs a `7 Days to Die` server
+Installs, configures and runs a `7 Days to Die` server.
+
+[7 Days to Die](http://7daystodie.com/) is a PC zombie survial game made by
+"[The Fun Pimps](http://thefunpimps.com/)" and is available through
+[Steam](http://store.steampowered.com/app/251570/).
 
 
 Requirements
@@ -482,13 +486,26 @@ override['sdtd']['steam_password'] = "YOUR_STEAM_PASSWORD"
 ```
 
 
+### 7dtd-server::backup
+
+After having run the `install` and `instance` recipes (or default, which does
+both), add `backup` to the run list:
+
+```json
+{
+  "run_list": [
+    "recipe[7dtd-server::backup]"
+  ]
+}
+```
+
+
 TODO
 ----
 
-* Add backup recipe
 * Add rsync script from vagrant
 * Convert definitions to LWRPs
-* Refactor a bit of the upstart stuff and other code
+* Refactor code
 
 
 Author

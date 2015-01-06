@@ -17,6 +17,7 @@ suites:
   - name: default
     run_list:
       - recipe[7dtd-server::default]
+      - recipe[7dtd-server::backup]
     attributes:
       sdtd:
         steam_username: <%= ENV['STEAM_USERNAME'] %>
