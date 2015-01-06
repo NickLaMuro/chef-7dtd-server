@@ -1,0 +1,45 @@
+<adminTools>
+  <% if @admins %>
+  <admins>
+    <% @admins.each do |id, permission_lvl| %>
+    <admin steamID="<%= id %>" permission_level="<%= permission_lvl %>" />
+    <% end %>
+  </admins>
+  <% end %>
+
+  <% if @moderators %>
+  <moderators>
+    <% @moderators.each do |id, permission_lvl| %>
+    <moderator steamID="<%= id %>" permission_level="<%= permission_lvl %>" />
+    <% end %>
+  </moderators>
+  <% end %>
+
+  <% if @permissions %>
+  <permissions>
+    <% @permissions.each do |cmd, permission_lvl| %>
+    <permission cmd="<%= cmd %>" permission_level="<%= permission_lvl %>" />
+    <% end %>
+  </permissions>
+  <% end %>
+
+  <!-- ONLY PUT ITEMS IN WHITELIST IF YOU WANT WHITELIST ONLY ENABLED!!! -->
+  <!-- If there are any items in the whitelist, the whitelist only mode is enabled -->
+  <!-- Nobody can join that ISN'T in the whitelist once whitelist only mode is enabled -->
+
+  <% if @whitelist %>
+  <whitelist>
+    <% @whitelist.each do |id, permission_lvl| %>
+    <whitelisted steamID="<%= id %>" permission_level="<%= permission_lvl %>" />
+    <% end %>
+  </whitelist>
+  <% end %>
+
+  <% if @blacklist %>
+  <blacklist>
+    <% @blacklist.each do |id, unban_date| %>
+    <blacklisted steamID="<%= id %>" unbandate="<%= unban_date %>" />
+    <% end %>
+  </blacklist>
+  <% end %>
+</adminTools>

@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<ServerSettings>
+  <% @config_variables.each do |variable, value| %>
+  <% if value %>
+  <property name="<%= variable.to_s %>" value="<%= value.to_s %>"/>
+  <% end %>
+  <% end %>
+</ServerSettings>

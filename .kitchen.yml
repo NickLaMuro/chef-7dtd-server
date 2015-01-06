@@ -1,0 +1,23 @@
+---
+<% require File.expand_path(File.join(__FILE__, '..', 'test', 'support', 'env')) %>
+driver:
+  name: vagrant
+  require_chef_omnibus: "11.4.4"
+  network:
+    - ["forwarded_port", {guest: 26900, host: 26900}]
+    - ["private_network", {ip: "192.168.33.33"}]
+
+provisioner:
+  name: chef_solo
+
+platforms:
+  - name: ubuntu-12.04
+
+suites:
+  - name: default
+    run_list:
+      - recipe[7dtd-server::default]
+    attributes:
+      sdtd:
+        steam_username: <%= ENV['STEAM_USERNAME'] %>
+        steam_password: <%= ENV['STEAM_PASSWORD'] %>
