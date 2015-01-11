@@ -47,6 +47,54 @@ Attributes
 </table>
 
 
+### Instance Settings
+
+<table>
+  <tr>
+    <th>Key</th>
+    <th>Type</th>
+    <th>Description</th>
+    <th>Default</th>
+  </tr>
+  <tr>
+    <td><tt>['sdtd']['instance_dir']</tt></td>
+    <td>String</td>
+    <td>The base directory for your instances</td>
+    <td><tt>"#{node["steamcmd"]["apps_dir"]}/294420/instances"</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['sdtd']['instance_name']</tt></td>
+    <td>String</td>
+    <td>Folder name for the instance.</td>
+    <td><tt>"7dtd_instance_01"</tt></td>
+  </tr>
+</table>
+
+
+### Backup settings
+
+<table>
+  <tr>
+    <th>Key</th>
+    <th>Type</th>
+    <th>Description</th>
+    <th>Default</th>
+  </tr>
+  <tr>
+    <td><tt>['sdtd']['backups_dir']</tt></td>
+    <td>String</td>
+    <td>The base directory for your backups.  Each instance will have a subfolder in here.</td>
+    <td><tt>"#{node['steamcmd']['home']}/backups"</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['sdtd']['compress_backups']</tt></td>
+    <td>Boolean</td>
+    <td>Whether or not to compress the backups created</td>
+    <td><tt>true</tt></td>
+  </tr>
+</table>
+
+
 ### Server Config
 
 Settings that determine the difficulty and other settings of the server, as
