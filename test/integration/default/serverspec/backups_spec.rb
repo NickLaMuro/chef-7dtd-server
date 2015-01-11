@@ -13,7 +13,7 @@ describe 'backups' do
 
   # Should have directories with a specific format
   describe command('ls /home/steam/backups/7dtd_instance_01') do
-    its(:stdout) { should match /\d{4}-\d{2}-\d{2}_\d{2}-\d{2}/ }
+    its(:stdout) { should match /\d{4}-\d{2}-\d{2}_\d{2}-\d{2}-\d{2}\.tar\.gz/ }
   end
 
   # Should have at most 5 backups

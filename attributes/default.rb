@@ -5,3 +5,4 @@ default["sdtd"]["instances_dir"] = "#{node["steamcmd"]["apps_dir"]}/294420/insta
 default["sdtd"]["instance_name"] = "7dtd_instance_01"
 
 default["sdtd"]["backups_dir"] = "#{node['steamcmd']['home']}/backups"
+default["sdtd"]["compress_backups"] = true
