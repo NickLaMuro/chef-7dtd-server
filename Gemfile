@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'rake'
 gem 'fog', '~>1.24.0'
 gem 'fog-core', '~>1.24.0'
 gem 'berkshelf', '~>2'
