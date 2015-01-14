@@ -38,7 +38,7 @@ define :sdtd_backup_instance, :telnet_port => nil, :telnet_password => nil, :sav
     command <<-CMD
       export BACKUP_DATE=#{params[:backup_naming_format]}
       rsync -a --delete --numeric-ids --delete-excluded /home/steam/apps/294420/instances/#{instance_name}/./ #{instance_backup_dir}/$BACKUP_DATE
-      #{"cd #{instance_backup_dir} && tar -czvf $BACKUP_DATE.tar.gz $BACKUP_DATE" if params[:compress_backups]}
+      #{"cd #{instance_backup_dir} && tar -czvf $BACKUP_DATE.tar.gz $BACKUP_DATE && rm -rf $BACKUP_DATE" if params[:compress_backups]}
       ls #{instance_backup_dir}/ | sort -r | tail -n +#{params[:backups_to_keep] + 1} | xargs -I {} rm -rf #{instance_backup_dir}/{}
     CMD
   end
