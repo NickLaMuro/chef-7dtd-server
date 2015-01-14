@@ -16,6 +16,25 @@ define :sdtd_instance, :server_config => {}, :admin_config => {}, :SaveGameFolde
     action :create
   end
 
+  backup_file = node['sdtd'].fetch('upload_backup', {})[params[:name]]
+  if backup_file
+    cookbook_file "/tmp/#{backup_file}" do
+      source "backups/#{backup_file}"
+      cookbook node['sdtd']['upload_backup_cookbook'] || '7dtd-server'
+      owner node['steamcmd']['user']
+      group node['steamcmd']['group']
+      mode '0755'
+      action :create
+    end
+
+
+    execute 'backup instance directory' do
+      command <<-CMD
+        tar --strip-components=1 -xzvf /tmp/#{backup_file} -C #{instance_dir} &&
+        chown #{node['steamcmd']['user']}:#{node['steamcmd']['group']} -R #{instance_dir}
+      CMD
+    end
+  end
 
   config_variables = node['sdtd']['serverconfig'].merge(params[:server_config])
 

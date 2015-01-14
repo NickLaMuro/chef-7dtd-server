@@ -20,3 +20,4 @@ bin/*
 
 # Backup files
 *.tar.gz
+/files/default/backups

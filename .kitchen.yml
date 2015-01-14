@@ -20,3 +20,4 @@ suites:
       sdtd:
         steam_username: <%= ENV['STEAM_USERNAME'] %>
         steam_password: <%= ENV['STEAM_PASSWORD'] %>
+        upload_backup: {'7dtd_instance_01': 'test_backup_dir.tar.gz'}
