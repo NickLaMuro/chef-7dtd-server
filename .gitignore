@@ -17,3 +17,6 @@ bin/*
 # Test files
 .kitchen/
 *.local.yml
+
+# Backup files
+*.tar.gz
