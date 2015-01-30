@@ -10,7 +10,7 @@ task :trigger_backup do
   if ENV['KITCHEN']
     sh "RECIPES=backup #{provision_cmd}"
   else
-    sh "cd #{vagrant_dir} && #{provision_cmd}"
+    sh "cd #{vagrant_dir} && RECIPES=backup #{provision_cmd}"
   end
 end
 
@@ -28,7 +28,7 @@ task :download_backup do
     VAGRANT_HOSTNAME=$(echo $VAGRANT_SSH_CONFIG | sed -e "s/.*HostName \\([0-9\\.]*\\).*/\\1/")
     VAGRANT_IDENTITY=$(echo $VAGRANT_SSH_CONFIG | sed -e "s/.*IdentityFile \\([0-9a-zA-Z\\/\\._-]*\\).*/\\1/")
 
-    VAGRANT_BACKUP_FILE=$(ssh #{ssh_opts} "ls #{instance_backup_dir} | sort -r | tail -1" 2>/dev/null)
+    VAGRANT_BACKUP_FILE=$(ssh #{ssh_opts} "ls #{instance_backup_dir} | sort | tail -1" 2>/dev/null)
     scp #{ssh_opts.gsub('-p', '-P')}:#{instance_backup_dir}/$VAGRANT_BACKUP_FILE #{backups_dir}/
   CMD
 end
@@ -61,7 +61,7 @@ def backups_dir
   if ENV['KITCHEN']
     File.dirname(__FILE__)
   else
-    File.expand_path(File.join(File.dirname(__FILE__), 'cookbooks', '7dtd-servers', 'files', 'default', 'backups'))
+    File.expand_path(File.join(File.dirname(__FILE__), 'cookbooks', '7dtd-server', 'files', 'default', 'backups'))
   end
 end
 
