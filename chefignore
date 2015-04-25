@@ -94,3 +94,8 @@ Vagrantfile
 # Travis #
 ##########
 .travis.yml
+
+# Backups #
+###########
+*.tar.gz
+files/default/backups/*

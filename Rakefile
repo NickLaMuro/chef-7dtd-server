@@ -7,11 +7,7 @@ task :backup => [:trigger_backup, :download_backup]
 
 desc "Trigger a backup on the server"
 task :trigger_backup do
-  if ENV['KITCHEN']
-    sh "RECIPES=backup #{provision_cmd}"
-  else
-    sh "cd #{vagrant_dir} && RECIPES=backup #{provision_cmd}"
-  end
+  sh "cd #{vagrant_dir} && RECIPES=backup #{provision_cmd}"
 end
 
 desc "Download the most recent backup from the server"
